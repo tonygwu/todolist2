@@ -8,7 +8,6 @@
 
 #import "TodoListAppDelegate.h"
 #import "EditableTableViewController.h"
-#import "CustomNavigationViewController.h"
 
 @implementation TodoListAppDelegate
 
