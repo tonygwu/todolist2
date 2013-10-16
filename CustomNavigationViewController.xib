@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomNavigationViewController">
+            <connections>
+                <outlet property="addBarButton" destination="eyF-sc-l4J" id="w3p-Ui-zid"/>
+                <outlet property="editBarButton" destination="bRY-9R-IIk" id="ddK-k4-THI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="apb-E7-a4L" customClass="CustomNavigationViewController">
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <navigationBar key="navigationBar" contentMode="scaleToFill" id="1MY-j7-hvb">
+                <autoresizingMask key="autoresizingMask"/>
+            </navigationBar>
+            <viewControllers>
+                <viewController id="AQ1-JY-Cvw" customClass="CustomNavigationViewController">
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="DQm-GE-jQi"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="HrP-db-7dX">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="bRY-9R-IIk"/>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="eyF-sc-l4J"/>
+                    </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <nil key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="addBarButton" destination="eyF-sc-l4J" id="uyx-pF-z69"/>
+                        <outlet property="editBarButton" destination="bRY-9R-IIk" id="M20-89-Vss"/>
+                    </connections>
+                </viewController>
+            </viewControllers>
+            <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hyw-x7-ceP">
+                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </toolbar>
+            <connections>
+                <outlet property="addBarButton" destination="eyF-sc-l4J" id="HfB-mR-TXh"/>
+                <outlet property="editBarButton" destination="bRY-9R-IIk" id="sGh-CS-Ygk"/>
+            </connections>
+        </navigationController>
+    </objects>
+</document>

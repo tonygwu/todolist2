@@ -1,0 +1,15 @@
+//
+//  CustomNavigationViewController.h
+//  todolist2
+//
+//  Created by Tony Wu on 10/16/13.
+//  Copyright (c) 2013 Tony Wu. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface CustomNavigationViewController : UINavigationController
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *editBarButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *addBarButton;
+
+@end
