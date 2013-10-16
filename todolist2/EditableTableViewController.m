@@ -68,7 +68,8 @@
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(add)];
 }
@@ -121,6 +122,7 @@
     // Configure the cell...
     cell.taskTextField.text = self.list[indexPath.row];
     cell.taskTextField.delegate = self.textFieldDelegates[indexPath.row];
+    [cell.taskTextField becomeFirstResponder];
     return cell;
 }
 

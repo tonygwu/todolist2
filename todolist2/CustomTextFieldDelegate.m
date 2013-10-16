@@ -28,7 +28,6 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"Saving state %@ to row %ld", textField.text, (long)self.row);
     [self.tableViewController setTextWithText:textField.text forRow:self.row];
 }
 

@@ -23,8 +23,6 @@
 		EA2A19AD180E830900CCF5CC /* EditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2A19AC180E830900CCF5CC /* EditableCell.xib */; };
 		EA2A19B1180E84F100CCF5CC /* EditableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2A19AF180E84F100CCF5CC /* EditableTableViewController.m */; };
 		EA2A19B2180E84F100CCF5CC /* EditableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2A19B0180E84F100CCF5CC /* EditableTableViewController.xib */; };
-		EA2A19CA180E8FF400CCF5CC /* CustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2A19C8180E8FF400CCF5CC /* CustomNavigationViewController.m */; };
-		EA2A19CD180E909C00CCF5CC /* CustomNavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2A19CC180E909C00CCF5CC /* CustomNavigationViewController.xib */; };
 		EA2A19D0180EB9FE00CCF5CC /* CustomTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2A19CF180EB9FE00CCF5CC /* CustomTextFieldDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -61,9 +59,6 @@
 		EA2A19AE180E84F100CCF5CC /* EditableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableTableViewController.h; sourceTree = "<group>"; };
 		EA2A19AF180E84F100CCF5CC /* EditableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableTableViewController.m; sourceTree = "<group>"; };
 		EA2A19B0180E84F100CCF5CC /* EditableTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditableTableViewController.xib; sourceTree = "<group>"; };
-		EA2A19C7180E8FF300CCF5CC /* CustomNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomNavigationViewController.h; path = ../CustomNavigationViewController.h; sourceTree = "<group>"; };
-		EA2A19C8180E8FF400CCF5CC /* CustomNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomNavigationViewController.m; path = ../CustomNavigationViewController.m; sourceTree = "<group>"; };
-		EA2A19CC180E909C00CCF5CC /* CustomNavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomNavigationViewController.xib; path = ../CustomNavigationViewController.xib; sourceTree = "<group>"; };
 		EA2A19CE180EB9FE00CCF5CC /* CustomTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextFieldDelegate.h; sourceTree = "<group>"; };
 		EA2A19CF180EB9FE00CCF5CC /* CustomTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextFieldDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,9 +120,6 @@
 		EA2A1939180E81FE00CCF5CC /* todolist2 */ = {
 			isa = PBXGroup;
 			children = (
-				EA2A19CC180E909C00CCF5CC /* CustomNavigationViewController.xib */,
-				EA2A19C7180E8FF300CCF5CC /* CustomNavigationViewController.h */,
-				EA2A19C8180E8FF400CCF5CC /* CustomNavigationViewController.m */,
 				EA2A1942180E81FE00CCF5CC /* TodoListAppDelegate.h */,
 				EA2A1943180E81FE00CCF5CC /* TodoListAppDelegate.m */,
 				EA2A19AE180E84F100CCF5CC /* EditableTableViewController.h */,
@@ -251,7 +243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA2A194C180E81FE00CCF5CC /* Images.xcassets in Resources */,
-				EA2A19CD180E909C00CCF5CC /* CustomNavigationViewController.xib in Resources */,
 				EA2A193E180E81FE00CCF5CC /* InfoPlist.strings in Resources */,
 				EA2A19B2180E84F100CCF5CC /* EditableTableViewController.xib in Resources */,
 				EA2A19AD180E830900CCF5CC /* EditableCell.xib in Resources */,
@@ -276,7 +267,6 @@
 				EA2A1944180E81FE00CCF5CC /* TodoListAppDelegate.m in Sources */,
 				EA2A1940180E81FE00CCF5CC /* main.m in Sources */,
 				EA2A19B1180E84F100CCF5CC /* EditableTableViewController.m in Sources */,
-				EA2A19CA180E8FF400CCF5CC /* CustomNavigationViewController.m in Sources */,
 				EA2A19D0180EB9FE00CCF5CC /* CustomTextFieldDelegate.m in Sources */,
 				EA2A19AB180E828500CCF5CC /* EditableCell.m in Sources */,
 			);
