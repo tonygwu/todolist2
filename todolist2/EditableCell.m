@@ -15,6 +15,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        NSLog(@"taskTextField is: %@", self.taskTextField);
         [self.taskTextField becomeFirstResponder];
     }
     return self;

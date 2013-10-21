@@ -23,7 +23,7 @@
 		EA2A19AD180E830900CCF5CC /* EditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2A19AC180E830900CCF5CC /* EditableCell.xib */; };
 		EA2A19B1180E84F100CCF5CC /* EditableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2A19AF180E84F100CCF5CC /* EditableTableViewController.m */; };
 		EA2A19B2180E84F100CCF5CC /* EditableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2A19B0180E84F100CCF5CC /* EditableTableViewController.xib */; };
-		EA2A19D0180EB9FE00CCF5CC /* CustomTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2A19CF180EB9FE00CCF5CC /* CustomTextFieldDelegate.m */; };
+		EA2A1A2018124D2E00CCF5CC /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2A1A1F18124D2E00CCF5CC /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +59,8 @@
 		EA2A19AE180E84F100CCF5CC /* EditableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableTableViewController.h; sourceTree = "<group>"; };
 		EA2A19AF180E84F100CCF5CC /* EditableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableTableViewController.m; sourceTree = "<group>"; };
 		EA2A19B0180E84F100CCF5CC /* EditableTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditableTableViewController.xib; sourceTree = "<group>"; };
-		EA2A19CE180EB9FE00CCF5CC /* CustomTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextFieldDelegate.h; sourceTree = "<group>"; };
-		EA2A19CF180EB9FE00CCF5CC /* CustomTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextFieldDelegate.m; sourceTree = "<group>"; };
+		EA2A1A1E18124D2E00CCF5CC /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		EA2A1A1F18124D2E00CCF5CC /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +130,8 @@
 				EA2A19AC180E830900CCF5CC /* EditableCell.xib */,
 				EA2A194B180E81FE00CCF5CC /* Images.xcassets */,
 				EA2A193A180E81FE00CCF5CC /* Supporting Files */,
-				EA2A19CE180EB9FE00CCF5CC /* CustomTextFieldDelegate.h */,
-				EA2A19CF180EB9FE00CCF5CC /* CustomTextFieldDelegate.m */,
+				EA2A1A1E18124D2E00CCF5CC /* Constants.h */,
+				EA2A1A1F18124D2E00CCF5CC /* Constants.m */,
 			);
 			path = todolist2;
 			sourceTree = "<group>";
@@ -267,8 +267,8 @@
 				EA2A1944180E81FE00CCF5CC /* TodoListAppDelegate.m in Sources */,
 				EA2A1940180E81FE00CCF5CC /* main.m in Sources */,
 				EA2A19B1180E84F100CCF5CC /* EditableTableViewController.m in Sources */,
-				EA2A19D0180EB9FE00CCF5CC /* CustomTextFieldDelegate.m in Sources */,
 				EA2A19AB180E828500CCF5CC /* EditableCell.m in Sources */,
+				EA2A1A2018124D2E00CCF5CC /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface EditableTableViewController : UITableViewController
-
-- (void)setTextWithText:(NSString *)text forRow:(NSInteger)rowId;
-
 @end

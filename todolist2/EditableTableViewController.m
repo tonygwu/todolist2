@@ -8,50 +8,38 @@
 
 #import "EditableTableViewController.h"
 #import "EditableCell.h"
-#import "CustomTextFieldDelegate.h"
+#import "Constants.h"
 
-@interface EditableTableViewController ()
+@interface EditableTableViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) NSMutableArray *list;
-@property (strong, nonatomic) NSMutableArray *textFieldDelegates;
-@property (strong, nonatomic) UITapGestureRecognizer * gestureRecognizer;
 @end
 
 @implementation EditableTableViewController
-
-@synthesize list = _list;
-@synthesize textFieldDelegates = _textFieldDelegates;
-@synthesize gestureRecognizer = _gestureRecognizer;
-
-- (NSMutableArray *)list
-{
-    if (!_list)
-    {
-        _list = [[NSMutableArray alloc] init];
-    }
-    return _list;
-}
-
-- (NSMutableArray *)textFieldDelegates
-{
-    if (!_textFieldDelegates)
-    {
-        _textFieldDelegates = [[NSMutableArray alloc] init];
-    }
-    return _textFieldDelegates;
-}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        self.title = @"To Do List";
+        self.title = APP_TITLE;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        self.list = [[defaults stringArrayForKey:TODO_USER_DEFAULTS_KEY] mutableCopy];
+        if (self.list) {
+            NSLog(@"Reloading tableView from list: %@", self.list);
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"Initializing new list!");
+            self.list = [[NSMutableArray alloc] init];
+        }
     }
     return self;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+}
+
 - (void) setEditing:(BOOL)editing animated:(BOOL)animated {
-    self.gestureRecognizer.enabled = !editing;
     [self.tableView setEditing:editing animated:animated];
     [super setEditing:editing animated:animated];
 }
@@ -62,29 +50,28 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    self.gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doneEditingText)];
-    [self.tableView addGestureRecognizer:self.gestureRecognizer];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(add)];
 }
 
-- (void) doneEditingText {
-    [self.view endEditing:YES];
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.list[textField.tag] = textField.text;
+    [[NSUserDefaults standardUserDefaults] setObject:self.list forKey:TODO_USER_DEFAULTS_KEY];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder]; // should i also write to defaults here?
+    return NO;
 }
 
 - (void) add
 {
     UINib *customNib = [UINib nibWithNibName:@"EditableCell" bundle:nil];
-    [self.tableView registerNib:customNib forCellReuseIdentifier:@"EditableCell"];
+    [self.tableView registerNib:customNib forCellReuseIdentifier:@"Cell"];
     
     [self.list addObject:@""];
-    [self.textFieldDelegates addObject:[[CustomTextFieldDelegate alloc] initWithRowIdAndTableViewController:self.textFieldDelegates.count tableViewControllerArg:self]];
     [self.tableView reloadData];
 }
 
@@ -94,34 +81,36 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setTextWithText:(NSString *)text forRow:(NSInteger)rowId {
-    self.list[rowId] = text;
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return self.list.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"EditableCell";
+    static NSString *CellIdentifier = @"Cell";
     EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[EditableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"EditableCell" owner:self options:nil] objectAtIndex:0];
     }
+    NSLog(@"cell is: %@", cell);
+    NSLog(@"cell.taskTextField is: %@", cell.taskTextField);
+    NSLog(@"list is: %@", self.list);
+    NSLog(@"Configuring cell index %d: %@", indexPath.row, self.list[indexPath.row]);
     // Configure the cell...
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.taskTextField.text = self.list[indexPath.row];
-    cell.taskTextField.delegate = self.textFieldDelegates[indexPath.row];
+    NSLog(@"taskTextField is: %@", cell.taskTextField.text);
+    NSLog(@"cell.taskTextField is: %@", cell.taskTextField);
+    cell.taskTextField.tag = indexPath.row;
+    cell.taskTextField.delegate = self;
     [cell.taskTextField becomeFirstResponder];
     return cell;
 }
@@ -142,38 +131,36 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        
         [self.list removeObjectAtIndex:indexPath.row];
-        [self.textFieldDelegates removeObjectAtIndex:indexPath.row];
-        for (long i = indexPath.row; i < self.textFieldDelegates.count; i++) {
-            ((CustomTextFieldDelegate *)self.textFieldDelegates[i]).row = i;
-        }
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         [self.list insertObject:@"" atIndex:indexPath.row];
-        [self.textFieldDelegates insertObject:[[CustomTextFieldDelegate alloc] initWithRowIdAndTableViewController:self.textFieldDelegates.count tableViewControllerArg:self] atIndex:indexPath.row];
     }
+    [[NSUserDefaults standardUserDefaults] setObject:self.list forKey:TODO_USER_DEFAULTS_KEY];
     [self.tableView reloadData];
 }
 
 
-/*
+
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    id tempObject = self.list[fromIndexPath.row];
+    [self.list removeObjectAtIndex:fromIndexPath.row];
+    [self.list insertObject:tempObject atIndex:toIndexPath.row];
+    [[NSUserDefaults standardUserDefaults] setObject:self.list forKey:TODO_USER_DEFAULTS_KEY];
 }
-*/
 
-/*
+
+
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
+
 
 /*
 #pragma mark - Table view delegate
